@@ -14,8 +14,6 @@ DarkRP.disabledDefaults["modules"] = {
     ["fpp"]              = false,
     ["hitmenu"]          = false,
     ["hud"]              = false,
-    ["hungermod"]        = true,
-    ["playerscale"]      = false,
     ["sleep"]            = false,
 }
 
