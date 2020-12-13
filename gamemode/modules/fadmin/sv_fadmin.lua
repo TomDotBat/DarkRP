@@ -4,24 +4,6 @@ util.AddNetworkString("FAdmin_GlobalSetting")
 util.AddNetworkString("FAdmin_PlayerSetting")
 util.AddNetworkString("FAdmin_GlobalPlayerSettings")
 
--- recursively adds everything in a directory to be downloaded by client
-local function AddDir(dir)
-    local files, folders = file.Find(dir .. "/*", "GAME")
-
-    for _, fdir in pairs(folders) do
-        -- don't spam people with useless .svn folders
-        if fdir ~= ".svn" then
-            AddDir(dir .. "/" .. fdir)
-        end
-    end
-
-    for _, v in pairs(files) do
-        resource.AddFile(dir .. "/" .. v)
-    end
-end
-
-AddDir("materials/fadmin")
-
 local function AddCSLuaFolder(fol)
     fol = string.lower(fol)
     local _, folders = file.Find(fol .. "*", "LUA")

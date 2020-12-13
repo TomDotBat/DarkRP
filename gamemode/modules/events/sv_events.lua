@@ -1,4 +1,4 @@
-resource.AddFile("sound/earthquake.mp3")
+
 util.PrecacheSound("earthquake.mp3")
 
 --[[---------------------------------------------------------
