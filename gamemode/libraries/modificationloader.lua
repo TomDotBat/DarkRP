@@ -11,7 +11,6 @@ DarkRP.disabledDefaults["modules"] = {
     ["afk"]              = true,
     ["chatsounds"]       = false,
     ["fpp"]              = false,
-    ["hitmenu"]          = false,
     ["hud"]              = false,
     ["sleep"]            = false,
 }
@@ -23,7 +22,6 @@ DarkRP.disabledDefaults["doorgroups"]       = {}
 DarkRP.disabledDefaults["entities"]         = {}
 DarkRP.disabledDefaults["food"]             = {}
 DarkRP.disabledDefaults["groupchat"]        = {}
-DarkRP.disabledDefaults["hitmen"]           = {}
 DarkRP.disabledDefaults["jobs"]             = {}
 DarkRP.disabledDefaults["shipments"]        = {}
 DarkRP.disabledDefaults["vehicles"]         = {}
