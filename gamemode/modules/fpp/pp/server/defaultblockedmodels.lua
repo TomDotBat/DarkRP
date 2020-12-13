@@ -12,7 +12,6 @@ local defaultblocked = {
 "models/cranes/crane_frame.mdl",
 "models/items/item_item_crate.mdl",
 "models/props/cs_militia/silo_01.mdl",
-"models/props/cs_office/microwave.mdl",
 "models/props/de_train/biohazardtank.mdl",
 "models/props_buildings/building_002a.mdl",
 "models/props_buildings/collapsedbuilding01a.mdl",

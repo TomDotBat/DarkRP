@@ -152,17 +152,6 @@ DarkRP.createEntity("Gun lab", {
     allowed = TEAM_GUN
 })
 
-if not DarkRP.disabledDefaults["modules"]["hungermod"] then
-    DarkRP.createEntity("Microwave", {
-        ent = "microwave",
-        model = "models/props/cs_office/microwave.mdl",
-        price = 400,
-        max = 1,
-        cmd = "buymicrowave",
-        allowed = TEAM_COOK
-    })
-end
-
 DarkRP.createCategory{
     name = "Other",
     categorises = "entities",

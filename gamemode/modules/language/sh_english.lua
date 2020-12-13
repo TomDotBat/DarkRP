@@ -183,9 +183,6 @@ local my_language = {
     gun_lab = "Gun Lab",
     any_lab = "any lab",
     gun = "gun",
-    microwave = "Microwave",
-    food = "food",
-    Food = "Food",
     money_printer = "Money Printer",
     tip_jar = "Tip Jar",
 
@@ -423,9 +420,6 @@ local my_language = {
     thumbs_up = "Thumbs up",
     wave = "Wave",
     dance = "Dance",
-
-    -- Hungermod
-    starving = "Starving!",
 
     -- AFK
     afk_mode = "AFK Mode",
