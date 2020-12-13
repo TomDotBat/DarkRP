@@ -324,8 +324,6 @@ if SERVER and not DarkRP.disabledDefaults["workarounds"]["Deprecated console com
         {command = "rp_unownall",           alternative = "forceunownall"           },
         {command = "rp_unown",              alternative = "forceunown"              },
         {command = "rp_own",                alternative = "forceown"                },
-        {command = "rp_tellall",            alternative = "admintellall"            },
-        {command = "rp_tell",               alternative = "admintell"               },
         {command = "rp_teamunban",          alternative = "teamunban"               },
         {command = "rp_teamban",            alternative = "teamban"                 },
         {command = "rp_setsalary",          alternative = "setmoney"                },

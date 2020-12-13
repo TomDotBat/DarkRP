@@ -214,22 +214,7 @@ usermessage.Hook("GotArrested", function(msg)
     end
 end)
 
-local AdminTell = function() end
 
-usermessage.Hook("AdminTell", function(msg)
-    timer.Remove("DarkRP_AdminTell")
-    local Message = msg:ReadString()
-
-    AdminTell = function()
-        draw.RoundedBox(4, 10, 10, Scrw - 20, 110, colors.darkblack)
-        draw.DrawNonParsedText(DarkRP.getPhrase("listen_up"), "GModToolName", Scrw / 2 + 10, 10, colors.white, 1)
-        draw.DrawNonParsedText(Message, "ChatFont", Scrw / 2 + 10, 90, colors.brightred, 1)
-    end
-
-    timer.Create("DarkRP_AdminTell", 10, 1, function()
-        AdminTell = function() end
-    end)
-end)
 
 --[[---------------------------------------------------------------------------
 Drawing the HUD elements such as Health etc.
@@ -255,7 +240,6 @@ local function DrawHUD()
     LockDown()
 
     Arrested()
-    AdminTell()
 end
 
 --[[---------------------------------------------------------------------------

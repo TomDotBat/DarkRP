@@ -314,7 +314,6 @@ local my_language = {
     wait_with_that = "Wait with that.",
     could_not_find = "Could not find %s",
     f3tovote = "Hit F3 to vote",
-    listen_up = "Listen up:", -- In rp_tell or rp_tellall
     nlr = "New Life Rule: Do Not Revenge Arrest/Kill.",
     reset_settings = "You have reset all settings!",
     must_be_x = "You must be a %s in order to be able to %s.",
