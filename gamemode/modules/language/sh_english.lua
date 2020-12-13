@@ -480,7 +480,6 @@ local my_language = {
     give_money = "Give money to the player you're looking at",
     drop_money = "Drop money",
     change_name = "Change your DarkRP name",
-    go_to_sleep = "Go to sleep/wake up",
     drop_weapon = "Drop current weapon",
     buy_health = "Buy health(%s)",
     request_gunlicense = "Request gunlicense",

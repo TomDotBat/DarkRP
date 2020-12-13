@@ -361,10 +361,6 @@ end
 function DarkRP.hooks:playerUnArrested(ply, actor)
     if ply:InVehicle() then ply:ExitVehicle() end
 
-    if ply.Sleeping then
-        DarkRP.toggleSleep(ply, "force")
-    end
-
     if not ply:Alive() and not GAMEMODE.Config.respawninjail then
         ply.NextSpawnTime = CurTime()
     end

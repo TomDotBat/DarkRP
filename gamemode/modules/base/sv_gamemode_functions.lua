@@ -118,7 +118,7 @@ function GM:PlayerSpawnProp(ply, model)
     if ply:isArrested() then return false end
 
     model = string.gsub(tostring(model), "\\", "/")
-    model = string.gsub(tostring(model), "//", "/")
+    model = string.gsub(tostring(model), "--", "/")
 
     local jobTable = ply:getJobTable()
     if jobTable.PlayerSpawnProp then
@@ -377,10 +377,6 @@ function GM:CanTool(ply, trace, mode)
 end
 
 function GM:CanPlayerSuicide(ply)
-    if ply.IsSleeping then
-        DarkRP.notify(ply, 1, 4, DarkRP.getPhrase("unable", "suicide", ""))
-        return false
-    end
     if ply:isArrested() then
         DarkRP.notify(ply, 1, 4, DarkRP.getPhrase("unable", "suicide", ""))
         return false
@@ -751,10 +747,9 @@ function GM:PlayerSpawn(ply)
         SendUserMessage("blackScreen", ply, false)
     end
 
-    if GAMEMODE.Config.babygod and not ply.IsSleeping and not ply.Babygod then
+    if GAMEMODE.Config.babygod and not ply.Babygod then
         enableBabyGod(ply)
     end
-    ply.IsSleeping = false
 
     ply:Extinguish()
 
@@ -920,10 +915,6 @@ function GM:PlayerDisconnected(ply)
 
     if isMayor and GAMEMODE.Config.shouldResetLaws then
         DarkRP.resetLaws()
-    end
-
-    if IsValid(ply.SleepRagdoll) then
-        ply.SleepRagdoll:Remove()
     end
 
     ply:keysUnOwnAll()

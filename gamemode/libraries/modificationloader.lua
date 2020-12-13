@@ -11,8 +11,7 @@ DarkRP.disabledDefaults["modules"] = {
     ["afk"]              = true,
     ["chatsounds"]       = false,
     ["fpp"]              = false,
-    ["hud"]              = false,
-    ["sleep"]            = false,
+    ["hud"]              = false
 }
 
 DarkRP.disabledDefaults["agendas"]          = {}
