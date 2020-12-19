@@ -16,16 +16,6 @@ function plyMeta:warrant(warranter, reason)
     end)
 
     if suppressMsg then return end
-
-    local warranterNick = IsValid(warranter) and warranter:Nick() or DarkRP.getPhrase("disconnected_player")
-    local centerMessage = DarkRP.getPhrase("warrant_approved", self:Nick(), reason, warranterNick)
-    local printMessage = DarkRP.getPhrase("warrant_ordered", warranterNick, self:Nick(), reason)
-
-    for _, b in ipairs(player.GetAll()) do
-        b:PrintMessage(HUD_PRINTCENTER, centerMessage)
-        b:PrintMessage(HUD_PRINTCONSOLE, printMessage)
-    end
-
     DarkRP.notify(warranter, 0, 4, DarkRP.getPhrase("warrant_approved2"))
 end
 
@@ -37,7 +27,6 @@ function plyMeta:unWarrant(unwarranter)
     self.warranted = false
 
     if suppressMsg then return end
-
     DarkRP.notify(unwarranter, 2, 4, DarkRP.getPhrase("warrant_expired", self:Nick()))
 end
 
@@ -62,14 +51,7 @@ function plyMeta:wanted(actor, reason, time)
     if suppressMsg then return end
 
     local actorNick = IsValid(actor) and actor:Nick() or DarkRP.getPhrase("disconnected_player")
-    local centerMessage = DarkRP.getPhrase("wanted_by_police", self:Nick(), reason, actorNick)
     local printMessage = DarkRP.getPhrase("wanted_by_police_print", actorNick, self:Nick(), reason)
-
-    for _, ply in ipairs(player.GetAll()) do
-        ply:PrintMessage(HUD_PRINTCENTER, centerMessage)
-        ply:PrintMessage(HUD_PRINTCONSOLE, printMessage)
-    end
-
     DarkRP.log(string.Replace(printMessage, "\n", " "), Color(0, 150, 255))
 end
 
@@ -86,11 +68,6 @@ function plyMeta:unWanted(actor)
         DarkRP.getPhrase("wanted_expired", self:Nick())
 
     DarkRP.log(string.Replace(expiredMessage, "\n", " "), Color(0, 150, 255))
-
-    for _, ply in ipairs(player.GetAll()) do
-        ply:PrintMessage(HUD_PRINTCENTER, expiredMessage)
-        ply:PrintMessage(HUD_PRINTCONSOLE, expiredMessage)
-    end
 end
 
 function plyMeta:arrest(time, arrester)
@@ -340,19 +317,12 @@ function DarkRP.hooks:playerArrested(ply, time, arrester)
 
     if ply:isArrested() then return end -- hasn't been arrested before
 
-    ply:PrintMessage(HUD_PRINTCENTER, DarkRP.getPhrase("youre_arrested", time))
-
-    local phrase = DarkRP.getPhrase("hes_arrested", ply:Nick(), time)
-    for _, v in ipairs(player.GetAll()) do
-        if v == ply then continue end
-        v:PrintMessage(HUD_PRINTCENTER, phrase)
-    end
-
     local steamID = ply:SteamID()
     timer.Create(ply:SteamID64() .. "jailtimer", time, 1, function()
         if IsValid(ply) then ply:unArrest() end
         arrestedPlayers[steamID] = nil
     end)
+
     umsg.Start("GotArrested", ply)
         umsg.Float(time)
     umsg.End()
