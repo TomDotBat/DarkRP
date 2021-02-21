@@ -430,35 +430,3 @@ local function BuyAmmo(ply, args)
     return ""
 end
 DarkRP.defineChatCommand("buyammo", BuyAmmo, 1)
-
-local function SetPrice(ply, args)
-    if args == "" then
-        DarkRP.notify(ply, 1, 4, DarkRP.getPhrase("invalid_x", DarkRP.getPhrase("arguments"), ""))
-        return ""
-    end
-
-    local a = tonumber(args)
-    if not a then
-        DarkRP.notify(ply, 1, 4, DarkRP.getPhrase("invalid_x", DarkRP.getPhrase("arguments"), ""))
-        return ""
-    end
-    local b = math.Clamp(math.floor(a), GAMEMODE.Config.pricemin, (GAMEMODE.Config.pricecap ~= 0 and GAMEMODE.Config.pricecap) or 500)
-    local trace = {}
-
-    trace.start = ply:EyePos()
-    trace.endpos = trace.start + ply:GetAimVector() * 85
-    trace.filter = ply
-
-    local tr = util.TraceLine(trace)
-
-    local ent = tr.Entity
-
-    if IsValid(ent) and ent.CanSetPrice and ent.SID == ply.SID then
-        ent:Setprice(b)
-    else
-        DarkRP.notify(ply, 1, 4, DarkRP.getPhrase("must_be_looking_at", DarkRP.getPhrase("any_lab")))
-    end
-    return ""
-end
-DarkRP.defineChatCommand("price", SetPrice)
-DarkRP.defineChatCommand("setprice", SetPrice)
