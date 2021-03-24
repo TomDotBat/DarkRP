@@ -315,7 +315,7 @@ for _, ply in pairs(player.GetAll()) do
     DrpCanHear[ply] = {}
 end
 
-local gridSize = GM.Config.voiceDistance * 2 -- Grid cell size is equal to the size of the diamater of player talking
+local gridSize = GM.Config.voiceDistance -- Grid cell size is equal to the size of the radius of player talking
 local floor = math.floor -- Caching floor as we will need to use it a lot
 
 -- Grid based position check
@@ -692,7 +692,10 @@ local function restoreReconnectedEnts(ply)
             e:Setowning_ent(ply)
         end
 
-        ply:addCustomEntity(e.DarkRPItem)
+        -- Some entities (e.g. vehicles) have an SID, but do not have a DarkRPItem
+        if e.DarkRPItem then
+            ply:addCustomEntity(e.DarkRPItem)
+        end
     end
 
     queuedForRemoval[sid] = nil
@@ -964,8 +967,9 @@ local function collectRemoveEntities(ply)
         remClasses[string.lower(customEnt.ent)] = true
     end
 
+    local sid = ply.SID
     for _, v in ipairs(ents.GetAll()) do
-        if v.SID ~= ply.SID or not v:IsVehicle() and not remClasses[string.lower(v:GetClass() or "")] then continue end
+        if v.SID ~= sid or not v:IsVehicle() and not remClasses[string.lower(v:GetClass() or "")] then continue end
 
         table.insert(collect, v)
     end
