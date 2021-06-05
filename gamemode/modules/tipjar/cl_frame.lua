@@ -287,6 +287,10 @@ onModelUpdate("frameVisible", function(visible)
 end)
 
 function DarkRP.tipJarUI(tipjar)
+    if ATOMIC.TipjarFrame then ATOMIC.TipjarFrame:Remove() end
+    ATOMIC.TipjarFrame = vgui.Create("ATOMIC.Tipjar")
+    if true then return end
+    print("BRUGER")
     updateModel("tipjar", tipjar)
     updateModel("isOwner", tipjar:Getowning_ent() == LocalPlayer())
     updateModel("amount", 0)
