@@ -30,10 +30,6 @@ local my_language = {
     no_jail_pos = "No jail position",
     invalid_x = "Invalid %s! %s",
 
-    -- F1 menu
-    f1ChatCommandTitle = "Chat commands",
-    f1Search = "Search...",
-
     -- Money things:
     price = "Price: %s%d",
     priceTag = "Price: %s",
@@ -183,9 +179,6 @@ local my_language = {
     gun_lab = "Gun Lab",
     any_lab = "any lab",
     gun = "gun",
-    microwave = "Microwave",
-    food = "food",
-    Food = "Food",
     money_printer = "Money Printer",
     tip_jar = "Tip Jar",
 
@@ -317,7 +310,6 @@ local my_language = {
     wait_with_that = "Wait with that.",
     could_not_find = "Could not find %s",
     f3tovote = "Hit F3 to vote",
-    listen_up = "Listen up:", -- In rp_tell or rp_tellall
     nlr = "New Life Rule: Do Not Revenge Arrest/Kill.",
     reset_settings = "You have reset all settings!",
     must_be_x = "You must be a %s in order to be able to %s.",
@@ -426,9 +418,6 @@ local my_language = {
     wave = "Wave",
     dance = "Dance",
 
-    -- Hungermod
-    starving = "Starving!",
-
     -- AFK
     afk_mode = "AFK Mode",
     unable_afk_spam_prevention = "Please wait before going AFK again.",
@@ -440,42 +429,6 @@ local my_language = {
     afk_cmd_to_exit = "Type /afk to exit AFK mode.",
     player_now_afk = "%s is now AFK.",
     player_no_longer_afk = "%s is no longer AFK.",
-
-    -- Hitmenu
-    hit = "hit",
-    hitman = "Hitman",
-    current_hit = "Hit: %s",
-    cannot_request_hit = "Cannot request hit! %s",
-    hitmenu_request = "Request",
-    player_not_hitman = "This player is not a hitman!",
-    distance_too_big = "Distance too big.",
-    hitman_no_suicide = "The hitman won't kill himself.",
-    hitman_no_self_order = "A hitman cannot order a hit for himself.",
-    hitman_already_has_hit = "The hitman already has a hit ongoing.",
-    price_too_low = "Price too low!",
-    hit_target_recently_killed_by_hit = "The target was recently killed by a hit,",
-    customer_recently_bought_hit = "The customer has recently requested a hit.",
-    accept_hit_question = "Accept hit from %s\nregarding %s for %s%d?", -- backwards compatibility
-    accept_hit_request = "Accept hit from %s\nregarding %s for %s?",
-    hit_requested = "Hit requested!",
-    hit_aborted = "Hit aborted! %s",
-    hit_accepted = "Hit accepted!",
-    hit_declined = "The hitman declined the hit!",
-    hitman_left_server = "The hitman has left the server!",
-    customer_left_server = "The customer has left the server!",
-    target_left_server = "The target has left the server!",
-    hit_price_set_to_x = "Hit price set to %s%d.", -- backwards compatibility
-    hit_price_set = "Hit price set to %s.",
-    hit_complete = "Hit by %s complete!",
-    hitman_died = "The hitman died!",
-    target_died = "The target has died!",
-    hitman_arrested = "The hitman was arrested!",
-    hitman_changed_team = "The hitman changed team!",
-    x_had_hit_ordered_by_y = "%s had an active hit ordered by %s",
-    place_a_hit = "place a hit!",
-    hit_cancel = "hit cancellation!",
-    hit_cancelled = "The hit was cancelled!",
-    no_active_hit = "You have no active hit!",
 
     -- Vote Restrictions
     hobos_no_rights = "Hobos have no voting rights!",
@@ -518,7 +471,6 @@ local my_language = {
     give_money = "Give money to the player you're looking at",
     drop_money = "Drop money",
     change_name = "Change your DarkRP name",
-    go_to_sleep = "Go to sleep/wake up",
     drop_weapon = "Drop current weapon",
     buy_health = "Buy health(%s)",
     request_gunlicense = "Request gunlicense",

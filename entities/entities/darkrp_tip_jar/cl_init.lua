@@ -1,5 +1,8 @@
 include("shared.lua")
 
+PIXEL.RegisterFontUnscaled("Tipjar.Overhead", "Open Sans Bold", 50)
+PIXEL.RegisterFontUnscaled("Tipjar.Anim", "Open Sans Bold", 150)
+
 function ENT:Initialize()
     self:initVars()
     self:initVarsClient()
@@ -28,7 +31,14 @@ function ENT:InitCsModel()
     self:CallOnRemove("csModel", fp{SafeRemoveEntity, self.csModel})
 end
 
+local localPly
+local bgColor = PIXEL.CopyColor(PIXEL.Colors.Background)
+bgColor.a = 245
+
 function ENT:Draw()
+    if not IsValid(localPly) then localPly = LocalPlayer() end
+    if PIXEL.checkDistance(self) then return end
+
     local Pos = self:GetPos()
     local Ang = self:GetAngles()
     local sysTime = SysTime()
@@ -54,15 +64,8 @@ function ENT:Draw()
     owner = (IsValid(owner) and owner:Nick()) or DarkRP.getPhrase("unknown")
     local title = DarkRP.getPhrase("tip_jar")
 
-    surface.SetFont("HUDNumber5")
-    local titleTextWidth, titleTextHeight = surface.GetTextSize(title)
-    local ownerTextWidth = surface.GetTextSize(owner)
-
     Ang:RotateAroundAxis(Ang:Forward(), 90)
 
-    -- The text can be considered to be "standing" on a plane with normal =
-    -- Ang:Up(). The vector towards the player's EyePos is projected onto that
-    -- plane, normalised and rotated to have the text face the user.
     local relativeEye = eyepos - Pos
     local relativeEyeOnPlane = relativeEye - planeNormal * relativeEye:Dot(planeNormal)
     local textAng = relativeEyeOnPlane:AngleEx(planeNormal)
@@ -70,11 +73,11 @@ function ENT:Draw()
     textAng:RotateAroundAxis(textAng:Up(), 90)
     textAng:RotateAroundAxis(textAng:Forward(), 90)
 
-
-    cam.Start3D2D(Pos - Ang:Right() * 11.5 , textAng, 0.2)
-        draw.WordBox(2, -titleTextWidth * 0.5, -72                      , title, "HUDNumber5", self.colorBackground, self.colorText)
-        draw.WordBox(2, -ownerTextWidth * 0.5, -72 + titleTextHeight + 4, owner, "HUDNumber5", self.colorBackground, self.colorText)
-
+    cam.Start3D2D(Pos - Ang:Right() * 11.5 , textAng, 0.05)
+        local name = PIXEL.EllipsesText(owner, 320, "Tipjar.Overhead")
+        PIXEL.DrawRoundedBox(6, -170, -180, 350, 130, bgColor)
+        PIXEL.DrawSimpleText(name, "Tipjar.Overhead", -0, -120, PIXEL.Colors.PrimaryText, TEXT_ALIGN_CENTER)
+        PIXEL.DrawSimpleText(title, "Tipjar.Overhead", -0, -170, PIXEL.Colors.PrimaryText, TEXT_ALIGN_CENTER)
         self:DrawAnims(sysTime)
     cam.End3D2D()
 end
@@ -86,18 +89,10 @@ function ENT:DrawAnims(sysTime)
         if anim.progress > 1 then
             anim = anim.nextDonateAnimation
             self.firstDonateAnimation = anim
-
             continue
         end
 
-        draw.SimpleText(
-            anim.amount,
-            "DarkRP_tipjar",
-            -anim.textWidth / 2,
-            -100 - anim.progress * 200,
-            ColorAlpha(self.donateAnimColor, Lerp(anim.progress, 1024, 0)),
-            0
-        )
+        PIXEL.DrawSimpleText(anim.amount, "Tipjar.Anim", -anim.textWidth / 2, -100 - anim.progress * 200, ColorAlpha(self.donateAnimColor, Lerp(anim.progress, 1024, 0)), 0)
 
         anim.progress = (sysTime - anim.start) * self.donateAnimSpeed
 
